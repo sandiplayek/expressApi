@@ -34,6 +34,13 @@ npm i -D nodemon
   app.use(express.json())
 
 
+  # if we use in "type" : "module" in package.json we can use import like 
+  import {abc} from "../src/abc.js"
+
+  # if we dont use it (by default) we need to require any package 
+  const express = require('express');
+
+
   
   
 
