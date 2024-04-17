@@ -24,6 +24,11 @@ npm i -D nodemon
 
   # to run in terminal
   npx nodemon app.js
+  or
+  npm run dev
+  or
+  yarn dev
+
 
   # to accept json data in post method 
   app.use(express.json())
