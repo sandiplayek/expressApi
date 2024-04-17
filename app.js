@@ -1,27 +1,17 @@
-import express from 'express'
-import { getNote,getNotes,createtNote } from './database.js';
+//import express from 'express'
+const express = require('express');
+
+//import router from "./notes.js"
 const app = express();
 const port = 5000;
 
-app.use(express.json())
+app.use(express.json());
+const notes = require('./notes.js');
+const users = require('./users.js')
+app.use('/notes',notes);
+app.use('/users',users);
 
 app.listen(port,()=>{
     console.log('listening from port '+port)
 })
 
-app.get('/notes', async (req,res)=>{
-    const notes = await getNotes();
-    res.send(notes)
-})
-
-app.get('/notes/:id', async (req,res)=>{
-    const id = req.params.id;
-    const notes = await getNote(id);
-    res.status(201).send(notes)
-})
-
-app.post('/notes', async (req,res)=>{
-    const {title, content} = req.body;
-    const noteid = await createtNote(title,content);
-    res.status(201).send(noteid)
-})
